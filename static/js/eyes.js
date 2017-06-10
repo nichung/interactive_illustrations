@@ -27,7 +27,7 @@ $(function() {
     makeEye(svgTwo)
   ];
 
-  // render each SVG as the DOM element
+  // render each SVG as DOM element
   eyes[0].domElement = svgOne.renderer.domElement;
   eyes[1].domElement = svgTwo.renderer.domElement;
 

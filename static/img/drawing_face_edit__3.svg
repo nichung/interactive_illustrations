@@ -127,6 +127,11 @@
          inkscape:connector-curvature="0" />
     </g>
     <path
+       id="hair-right"
+       d="m 1909.5929,-391.93591 c 0,0 100.8439,32.66785 61.4902,259.84009 -39.3539,227.172256 -61.4902,-259.84009 -61.4902,-259.84009 z"
+       style="fill:#00ffff;fill-rule:evenodd;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:connector-curvature="0" />
+    <path
        id="hair-top"
        d="m 1310.4357,-427.44374 c 60.6874,-2.71052 37.3207,-437.14618 595.7253,-25.23057 558.4048,411.915692 -598.1759,10.65579 -598.1759,10.65579"
        style="fill:#00ffff;fill-rule:evenodd;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -203,11 +208,6 @@
        id="cheekbone-right"
        d="M 1945.28,97.785203 C 1735.7151,160.42385 1753.0782,256.16135 1753.0782,256.16135"
        style="opacity:0.3;fill:url(#linearGradient4176-0);fill-opacity:1;fill-rule:evenodd;stroke-linecap:butt;stroke-linejoin:miter"
-       inkscape:connector-curvature="0" />
-    <path
-       id="hair-right"
-       d="m 1909.5929,-391.93591 c 0,0 100.8439,32.66785 61.4902,259.84009 -39.3539,227.172256 -61.4902,-259.84009 -61.4902,-259.84009 z"
-       style="fill:#00ffff;fill-rule:evenodd;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        inkscape:connector-curvature="0" />
   </g>
 </svg>
