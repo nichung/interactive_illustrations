@@ -18,34 +18,23 @@
 
     portrait.mousemove(function (event) {
         lineLeft.attr({
-            x2: event.pageX - 150,
-            y2: event.pageY + 10
+            x2: event.pageX,
+            y2: event.pageY
         });
     });
 })();
 
-function writeMessage(canvas, message) {
-  var context = canvas.getContext('2d');
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  context.font = '18pt Calibri';
-  context.fillStyle = 'black';
-  context.fillText(message, 10, 25);
-}
-function getMousePos(canvas, evt) {
-  var rect = canvas.getBoundingClientRect();
-  return {
-    x: evt.clientX - rect.left,
-    y: evt.clientY - rect.top
-  };
-}
-var canvas = document.getElementById('myCanvas');
-var context = canvas.getContext('2d');
+// show mousemove coordinates
+document.getElementById("myPortrait").addEventListener("mousemove", function(event) {
+    myFunction(event);
+});
 
-canvas.addEventListener('mousemove', function(evt) {
-  var mousePos = getMousePos(canvas, evt);
-  var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
-  writeMessage(canvas, message);
-}, false);
+function myFunction(e) {
+    var x = e.clientX;
+    var y = e.clientY;
+    var coor = "Coordinates: (" + x + "," + y + ")";
+    document.getElementById("coordinates").innerHTML = coor;
+}
 
 // eyes
 var leftEye = document.querySelector('#left-eye');
