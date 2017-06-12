@@ -16,30 +16,36 @@
         strokeDasharray: "10 20 10 20"
     });
 
-    lineRight = portrait.line(
-        489.519,
-        450.149,
-        eyeRight.x,
-        eyeRight.y
-    ).attr({
-        stroke: "#ffff00",
-        strokeWidth: 5,
-        strokeLinecap: "round",
-        strokeDasharray: "10 20 10 20"
-    });
     portrait.mousemove(function (event) {
         lineLeft.attr({
             x2: event.pageX - 150,
             y2: event.pageY + 10
         });
     });
-    portrait.mousemove(function (event) {
-        lineRight.attr({
-            x2: event.pageX,
-            y2: event.pageY
-        });
-    });
 })();
+
+function writeMessage(canvas, message) {
+  var context = canvas.getContext('2d');
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.font = '18pt Calibri';
+  context.fillStyle = 'black';
+  context.fillText(message, 10, 25);
+}
+function getMousePos(canvas, evt) {
+  var rect = canvas.getBoundingClientRect();
+  return {
+    x: evt.clientX - rect.left,
+    y: evt.clientY - rect.top
+  };
+}
+var canvas = document.getElementById('myCanvas');
+var context = canvas.getContext('2d');
+
+canvas.addEventListener('mousemove', function(evt) {
+  var mousePos = getMousePos(canvas, evt);
+  var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
+  writeMessage(canvas, message);
+}, false);
 
 // eyes
 var leftEye = document.querySelector('#left-eye');
