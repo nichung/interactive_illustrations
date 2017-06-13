@@ -21,17 +21,32 @@
             x2: event.pageX,
             y2: event.pageY
         });
+        var eyes = ['eyeLeft', 'eyeRight'];
+
+        var mouse = new Two.Vector(event.clientX, event.clientY);
+        _.each(eyes, function(eye) {
+          var rect = eyes.domElement.getBoundingClientRect();
+          var center = {
+            x: 219.141,
+            y: 447.36
+          };
+          var theta = Math.atan2(mouse.y - center.y, mouse.x - center.x);
+          var distance = mouse.distanceTo(center);
+          var pct = distance / $window.width();
+          var radius = 75 * pct;
+          eyes.destination.set(radius * Math.cos(theta), radius * Math.sin(theta));
+        });
     });
 })();
 
-// show mousemove coordinates
+// show cursor coordinates
 document.getElementById("myPortrait").addEventListener("mousemove", function(event) {
     myFunction(event);
 });
 
 function myFunction(e) {
-    var x = e.clientX;
-    var y = e.clientY;
+    var x = e.pageX;
+    var y = e.pageY;
     var coor = "Coordinates: (" + x + "," + y + ")";
     document.getElementById("coordinates").innerHTML = coor;
 }

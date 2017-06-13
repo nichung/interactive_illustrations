@@ -15,7 +15,6 @@
         strokeLinecap: "round",
         strokeDasharray: "10 20 10 20"
     });
-
     lineRight = portrait.line(
         489.519,
         450.149,
@@ -41,12 +40,25 @@
     });
 })();
 
+// show cursor coordinates
+document.getElementById("myPortrait").addEventListener("mousemove", function(event) {
+    myFunction(event);
+});
+
+function myFunction(e) {
+    var x = e.pageX;
+    var y = e.pageY;
+    var coor = "Coordinates: (" + x + "," + y + ")";
+    document.getElementById("coordinates").innerHTML = coor;
+}
+
+
 // eyes
 var leftEye = document.querySelector('#left-eye');
 var rightEye = document.querySelector('#right-eye');
 var leftEyeBall = document.querySelector('#eyeball-left');
 var rightEyeBall = document.querySelector('#eyeball-right');
-var eyes = ['svgOne', 'svgTwo'];
+var eyes = ['leftEyeBall', 'rightEyeBall'];
 
 // ears
 var rightEar = document.querySelector('#ear-right')
