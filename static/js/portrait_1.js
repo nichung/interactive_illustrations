@@ -1,55 +1,67 @@
-(function () {
+var portrait = Snap.select("#portraitSVG");
+var eyeRight = portrait.select("#eyeball-right");
+var eyeLeft = portrait.select("#eyeball-left");
 
-    var portrait = Snap.select("#portraitSVG");
-    var eyeRight = portrait.select("#eyeball-right");
-    var eyeLeft = portrait.select("#eyeball-left");
-
-    lineLeft = portrait.line(
-        219.141,
-        447.36,
-        eyeLeft.x,
-        eyeLeft.y
-    ).attr({
-        stroke: "#ffff00",
-        strokeWidth: 5,
-        strokeLinecap: "round",
-        strokeDasharray: "10 20 10 20"
+// draw the line
+/*lineLeft = portrait.line(
+    219.141,
+    447.36,
+    eyeLeft.x,
+    eyeLeft.y
+).attr({
+    stroke: "#ffff00",
+    strokeWidth: 5,
+    strokeLinecap: "round",
+    strokeDasharray: "10 20 10 20"
+});
+lineRight = portrait.line(
+    489.519,
+    450.149,
+    eyeRight.x,
+    eyeRight.y
+).attr({
+    stroke: "#ffff00",
+    strokeWidth: 5,
+    strokeLinecap: "round",
+    strokeDasharray: "10 20 10 20"
+});
+// describe how the line ends at the cursor
+portrait.mousemove(function (event) {
+    lineLeft.attr({
+        x2: event.pageX,
+        y2: event.pageY
     });
-
-    portrait.mousemove(function (event) {
-        lineLeft.attr({
-            x2: event.pageX,
-            y2: event.pageY
-        });
-        var eyes = ['eyeLeft', 'eyeRight'];
-
-        var mouse = new Two.Vector(event.clientX, event.clientY);
-        _.each(eyes, function(eye) {
-          var rect = eyes.domElement.getBoundingClientRect();
-          var center = {
-            x: 219.141,
-            y: 447.36
-          };
-          var theta = Math.atan2(mouse.y - center.y, mouse.x - center.x);
-          var distance = mouse.distanceTo(center);
-          var pct = distance / $window.width();
-          var radius = 75 * pct;
-          eyes.destination.set(radius * Math.cos(theta), radius * Math.sin(theta));
-        });
+});
+/*portrait.mousemove(function (event) {
+    lineRight.attr({
+        x2: event.pageX,
+        y2: event.pageY
     });
-})();
+}); */
 
 // show cursor coordinates
 document.getElementById("myPortrait").addEventListener("mousemove", function(event) {
     myFunction(event);
 });
 
+// get coordinates and show in coordinate format as absolute values
 function myFunction(e) {
     var x = e.pageX;
     var y = e.pageY;
     var coor = "Coordinates: (" + x + "," + y + ")";
     document.getElementById("coordinates").innerHTML = coor;
 }
+
+// horizontal eye movement following mouse
+var mousePointer = document.getElementById("eyeball-left")
+
+document.addEventListener('mousemove', function(e){
+  var x = e.pageX / window.innerHeight;
+      x = x * +60;
+  mousePointer.style.webkitTransform = 'translateX(' + x + '%)';
+  mousePointer.style.transform = 'translateX(' + x + '%)';
+})
+
 
 // eyes
 var leftEye = document.querySelector('#left-eye');
