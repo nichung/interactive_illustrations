@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>illustration animation with d3.js</title>
+<meta charset="utf-8">
+<script src="js/d3/d3.js"></script>
+<style>
+body {
+  background-color: rgb(0, 158, 169);
+  color: white;
+  font-family: sans-serif;
+}
+
+#main {
+  width: 100%;
+}
+
+#face_container {
+  width: 50%;
+  max-width: 530px;
+  float: left;
+}
+
+#some_content {
+  float: left;
+  padding: 2em;
+}
+
+#face_img {
+  border: 5px solid rgb(0, 128, 149);
+}
+</style>
+<script>
+  var svg = null;
+  var face_root = null;
+
+  d3.xml("self_protrait__2018_base__01.svg", function(error, xml) {
+    if (error) throw error;
+
+    // "xml" is the XML DOM tree
+    var htmlSVG = document.getElementById('map');  // the svg-element in our HTML file
+    // append the "face_root" group to the svg-element in our HTML file
+    htmlSVG.appendChild(xml.documentElement.getElementById('face_root'));
+
+    // d3 objects for later use
+    svg = d3.select(htmlSVG);
+    face_root = svg.select('#face_root');
+
+    // get the svg-element from the original SVG file
+    var xmlSVG = d3.select(xml.getElementsByTagName('svg')[0]);
+    // copy its "viewBox" attribute to the svg element in our HTML file
+    svg.attr('viewBox', xmlSVG.attr('viewBox'));
+  });
+</script>
+<body>
+<div id="main">
+  <div id="face_container">
+    <svg id="face_img" width="100%">
+
+    </svg>
+  </div>
+  <div id="some_content">
+    <h1>An animated SVG file</h1>
+    <h2>Using d3.js</h2>
+  </div>
+</div>
+</body>
